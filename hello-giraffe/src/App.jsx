@@ -1,9 +1,23 @@
+// src/App.jsx
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import DialoguePage from "./pages/DialoguePage";
+import DialogueDetailPage from "./pages/DialogueDetailPage"; // 👈 1. 상세 페이지 import
+import "./index.css";
+import "./App.css";
+
 function App() {
-  return <h1>Hello, Giraffe! 마음을 잇는 대화의 시작</h1>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/new" element={<DialoguePage />} />
+        {/* 👇 2. 상세 페이지를 위한 경로 추가 */}
+        <Route path="/dialogue/:id" element={<DialogueDetailPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
-/* 세미콜론=문장의 끝. 
-ASI(세미콜론 자동 삽입) 존재. 4
-넣어도 되고 안 넣어도 됨. 
-하지만 일관성과 혹시 모를 요류를 위해 넣는 게 유익함.(현재 실력에서는.) */

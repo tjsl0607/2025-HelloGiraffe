@@ -1,13 +1,8 @@
+/* src/index.css */
 body {
   margin: 0;
-  front-family: -apple-system, BlinkMacSystemFront, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  /*폰트 지정: -애플의 기본 글꼴 사용, 윈도우용, 안드로이드용, 리눅스용, 클래식 글꼴, 기본 고딕체 사용. 순서대로 우선순위*/
-  -webkit-front-smoothing: antialiased;
-  /*웹킷 엔진  한정 글꼴 부드럽게, 경계 회색 처리*/
-  -mos-osx-front-smoothing: grayscale;
-  /*모질라 엔진 한정 글꼴 부드럽게, 경계 회색 처리*/
-  background-color: #141716;
-  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", sans-serif;
+  background-color: #f8f9fa; /* 아주 연한 회색으로 변경 */
+  color: #212529; /* 더 부드러운 검은색으로 변경 */
 }

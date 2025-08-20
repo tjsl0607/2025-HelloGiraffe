@@ -1,0 +1,220 @@
+/* src/App.css - Inspired by the soft, modern UI */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* --- 1. Root & Body (The Overall Vibe) --- */
+:root {
+  --c-bg: #feece9;
+  --c-text-dark: #433863;
+  --c-text-light: #9b93b2;
+  --c-card-bg: rgba(255, 255, 255, 0.5);
+  --c-primary-accent: #ff8b8b;
+  --c-gradient-start: #ffd4a9;
+  --c-gradient-end: #ffa8a8;
+}
+
+body {
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  background-color: var(--c-bg);
+  background-image: radial-gradient(
+      circle at 15% 85%,
+      hsla(339, 87%, 85%, 0.4),
+      transparent 30vmax
+    ),
+    radial-gradient(
+      circle at 85% 15%,
+      hsla(24, 100%, 85%, 0.4),
+      transparent 30vmax
+    );
+  color: var(--c-text-dark);
+  min-height: 100vh;
+}
+
+/* --- 2. Layout & Typography --- */
+.page-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.page-title {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: var(--c-text-dark);
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.empty-list-message {
+  text-align: center;
+  margin-top: 50px;
+  color: var(--c-text-light);
+  font-size: 1.1em;
+  background-color: var(--c-card-bg);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* --- 3. Header --- */
+.app-header {
+  background: none;
+  box-shadow: none;
+  border-bottom: none;
+  padding: 0;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  font-weight: 700;
+  color: var(--c-text-dark);
+  text-align: left;
+}
+
+/* --- 4. Cards (DialogueStep & ListItem) - The Glassmorphism Effect --- */
+.dialogue-card,
+.dialogue-list-item {
+  background: var(--c-card-bg);
+  border-radius: 24px;
+  padding: 25px 30px;
+  margin-bottom: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(108, 91, 148, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* For Safari */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.dialogue-list-item {
+  cursor: pointer;
+}
+
+.dialogue-list-item:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 12px 40px 0 rgba(108, 91, 148, 0.2);
+}
+
+/* Card Content */
+.dialogue-phase,
+.item-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: var(--c-text-dark);
+  margin: 0 0 10px 0;
+}
+
+.dialogue-guide,
+.item-date {
+  color: var(--c-text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.item-date {
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+/* --- 5. Buttons --- */
+.button {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  font-size: 1.1em;
+  font-weight: 600;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.button-primary {
+  background-color: white;
+  color: var(--c-primary-accent);
+  box-shadow: 0 4px 15px rgba(255, 139, 139, 0.3);
+}
+.button-primary:hover {
+  background-color: #fff0f0;
+  box-shadow: 0 6px 20px rgba(255, 139, 139, 0.4);
+  transform: translateY(-2px);
+}
+
+.button-success {
+  background: linear-gradient(
+    45deg,
+    var(--c-gradient-start),
+    var(--c-gradient-end)
+  );
+  color: white;
+  margin-top: 30px;
+  box-shadow: 0 4px 20px rgba(255, 168, 168, 0.5);
+}
+.button-success:hover {
+  box-shadow: 0 6px 25px rgba(255, 168, 168, 0.6);
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* --- 6. Text Area --- */
+.dialogue-textarea {
+  width: 100%;
+  min-height: 120px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 15px;
+  font-size: 1em;
+  font-family: inherit;
+  color: var(--c-text-dark);
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  resize: vertical;
+}
+
+.dialogue-textarea::placeholder {
+  color: var(--c-text-light);
+}
+
+.dialogue-textarea:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+/* src/App.css 파일 맨 아래에 추가 */
+
+/* --- 7. 대화 목록 아이템 내부 구조 및 삭제 버튼 --- */
+.dialogue-list-item {
+  display: flex; /* 내부 요소들을 가로로 정렬 */
+  justify-content: space-between; /* 양쪽 끝으로 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+}
+
+.item-content {
+  flex-grow: 1; /* 남는 공간을 모두 차지 */
+}
+
+.button-delete {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 15px;
+  font-size: 0.9em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  flex-shrink: 0; /* 버튼 크기가 줄어들지 않도록 설정 */
+  margin-left: 20px; /* 왼쪽 내용과 간격 */
+}
+
+.button-delete:hover {
+  background-color: #ff4757;
+}
