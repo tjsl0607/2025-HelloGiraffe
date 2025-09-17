@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function DialogueListItem({ dialogue, onDelete }) {
-  // 🔥 [변경] Firestore Timestamp를 Date 객체로 변환
+  // Firestore Timestamp를 Date 객체로 변환
   // dialogue.createdAt이 존재하고, toDate 메서드를 가지고 있을 때만 실행
   const formattedDate =
     dialogue.createdAt && typeof dialogue.createdAt.toDate === "function"
@@ -24,7 +24,7 @@ function DialogueListItem({ dialogue, onDelete }) {
           <h3 className="item-title">{dialogue.scenarioTitle}</h3>
           <p className="item-date">{formattedDate}</p>
         </div>
-        {/* 👇 삭제 버튼을 추가합니다. */}
+        {/* 삭제 버튼 추가 */}
         <button className="button-delete" onClick={handleDeleteClick}>
           삭제
         </button>

@@ -14,7 +14,7 @@ function DialoguePage() {
 
   const [activeStepIndex, setActiveStepIndex] = useState(0);
 
-  // 👇 한글을 영어 키로 변환하는 매핑 추가
+  // 한글을 영어 키로 변환하는 매핑 추가
   const phaseMap = {
     관찰: "observation",
     느낌: "feeling",
@@ -22,14 +22,13 @@ function DialoguePage() {
     부탁: "request",
   };
 
-  // 👇 수정된 handleInputChange
   const handleInputChange = (phase, value) => {
     // 한글 phase를 영어 키로 변환
     const key = phaseMap[phase] || phase.toLowerCase();
     setInputs((prev) => ({ ...prev, [key]: value }));
   };
 
-  // 🔥 [변경] handleSave 함수를 비동기 함수로 수정
+  // handleSave 함수를 비동기 함수로 수정
   const handleSave = async () => {
     const currentScenario = scenarios[currentScenarioId];
 
@@ -70,7 +69,7 @@ function DialoguePage() {
           <h1 className="page-title">
             어떤 상황에 대해 이야기하고 싶으신가요?
           </h1>
-          {/* 👇 그리드 레이아웃을 사용합니다. */}
+          {/* 그리드 레이아웃을 사용. */}
           <div className="scenario-grid">
             {Object.keys(scenarios).map((key) => {
               const scenario = scenarios[key];
@@ -81,7 +80,7 @@ function DialoguePage() {
                   className="scenario-card" // 새로운 스타일 클래스를 사용합니다.
                   onClick={() => setCurrentScenarioId(key)}
                 >
-                  {/* 👇 아이콘을 렌더링합니다. */}
+                  {/* 아이콘 렌더링 */}
                   {ScenarioIcon && <ScenarioIcon className="scenario-icon" />}
                   <h3 className="scenario-title">{scenario.title}</h3>
                 </div>

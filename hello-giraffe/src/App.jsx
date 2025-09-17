@@ -16,7 +16,6 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/new" element={<DialoguePage />} />
-        {/* 👇 2. 상세 페이지를 위한 경로 추가 */}
         <Route path="/dialogue/:id" element={<DialogueDetailPage />} />
       </Routes>
     </BrowserRouter>

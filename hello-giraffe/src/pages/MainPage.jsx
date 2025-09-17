@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import DialogueList from "../components/DialogueList";
 import { getDialogues, deleteDialogue } from "../api/dialogueService.js";
-// 👇 1. react-icons에서 사용할 아이콘들을 가져옵니다.
+// react-icons에서 사용할 아이콘들을 가져옵니다.
 import {
   BsLayoutTextWindowReverse,
   BsChatHeart,
   BsArchive,
-  BsPlusLg, // 👈 1. + 모양 아이콘을 가져옵니다.
+  BsPlusLg, // + 모양 아이콘을 가져옵니다.
 } from "react-icons/bs";
 
 function MainPage() {
@@ -56,7 +56,7 @@ function MainPage() {
             <br />
             건강한 관계를 만들어가도록 돕는 마음 대화 가이드입니다.
           </p>
-          {/* 👇 2. 버튼의 클래스명을 변경하고 아이콘을 추가합니다. */}
+          {/* 버튼의 클래스명을 변경하고 아이콘을 추가합니다. */}
           <Link to="/new" className="button button-cta">
             <BsPlusLg />
             새로운 대화 시작하기
@@ -66,7 +66,7 @@ function MainPage() {
         <section className="features-section">
           <h2 className="section-title">주요 기능</h2>
           <div className="features-grid">
-            {/* 👇 2. 각 feature-card에 아이콘을 추가합니다. */}
+            {/* 각 feature-card에 아이콘을 추가합니다. */}
             <div className="feature-card">
               <BsLayoutTextWindowReverse className="feature-icon" />
               <h3 className="feature-title">상황별 시나리오</h3>

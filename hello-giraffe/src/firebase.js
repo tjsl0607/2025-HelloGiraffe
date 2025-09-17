@@ -16,5 +16,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Firestore 인스턴스를 초기화하고 export 합니다.
-// 👇 이 줄이 dialogueService.js에서 db를 import할 수 있게 해줍니다.
+// 이 줄이 dialogueService.js에서 db를 import할 수 있게 해줍니다.
 export const db = getFirestore(app);

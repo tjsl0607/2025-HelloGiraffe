@@ -1,5 +1,3 @@
-// src/components/BackgroundManager.jsx (새 파일)
-
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 

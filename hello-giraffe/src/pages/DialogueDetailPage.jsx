@@ -8,9 +8,9 @@ import { FaArrowLeft } from "react-icons/fa";
 function DialogueDetailPage() {
   const { id } = useParams();
   const [dialogue, setDialogue] = useState(null);
-  const [isLoading, setIsLoading] = useState(true); // 👈 로딩 상태 추가
+  const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
 
-  // 🔥 [변경] useEffect에서 비동기 데이터를 가져오도록 수정
+  //  useEffect에서 비동기 데이터를 가져오도록 수정
   useEffect(() => {
     const fetchDialogue = async () => {
       try {
