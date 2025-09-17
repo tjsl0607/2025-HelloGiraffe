@@ -1,8 +1,11 @@
 // src/data/scenarios.js
+import { BsClockHistory, BsMoonStars } from "react-icons/bs";
 
 export const scenarios = {
   latePromise: {
+    id: "latePromise",
     title: "친구가 약속에 늦었을 때",
+    icon: BsClockHistory, // '늦은 친구'를 위한 아이콘
     steps: [
       {
         phase: "관찰",
@@ -36,6 +39,7 @@ export const scenarios = {
   sleepHabit: {
     id: "sleepHabit",
     title: "엄마와 수면 습관 문제로 다툴 때",
+    icon: BsMoonStars, // '수면 습관'을 위한 아이콘
     steps: [
       {
         phase: "관찰",

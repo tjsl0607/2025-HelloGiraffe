@@ -2,9 +2,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// 👇 부모로부터 onDelete 함수를 받아옵니다.
 function DialogueListItem({ dialogue, onDelete }) {
-  const formattedDate = new Date(dialogue.createdAt).toLocaleString();
+  // 🔥 [변경] Firestore Timestamp를 Date 객체로 변환
+  // dialogue.createdAt이 존재하고, toDate 메서드를 가지고 있을 때만 실행
+  const formattedDate =
+    dialogue.createdAt && typeof dialogue.createdAt.toDate === "function"
+      ? dialogue.createdAt.toDate().toLocaleString()
+      : "날짜 정보 없음";
 
   // 삭제 버튼 클릭 시, 이벤트가 Link로 전파되는 것을 막습니다. (상세 페이지로 이동 방지)
   const handleDeleteClick = (e) => {

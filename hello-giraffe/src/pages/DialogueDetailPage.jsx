@@ -1,39 +1,64 @@
-// src/pages/DialogueDetailPage.jsx
+// src/pages/DialogueDetailPage.jsx (Firebase 연동 버전)
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getDialogues } from "../api/dialogueService";
 import Header from "../components/Header";
+import { FaArrowLeft } from "react-icons/fa";
 
 function DialogueDetailPage() {
-  const { id } = useParams(); // URL에서 :id 부분을 가져옵니다.
+  const { id } = useParams();
   const [dialogue, setDialogue] = useState(null);
+  const [isLoading, setIsLoading] = useState(true); // 👈 로딩 상태 추가
 
+  // 🔥 [변경] useEffect에서 비동기 데이터를 가져오도록 수정
   useEffect(() => {
-    const allDialogues = getDialogues();
-    const foundDialogue = allDialogues.find((d) => d.id.toString() === id);
+    const fetchDialogue = async () => {
+      try {
+        const allDialogues = await getDialogues();
+        const foundDialogue = allDialogues.find((d) => d.id === id);
+        setDialogue(foundDialogue);
+      } catch (error) {
+        console.error("데이터를 불러오는 중 오류 발생:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-    // 👇 디버깅: 찾은 데이터 구조 확인
-    console.log("찾은 대화 기록:", foundDialogue);
-    if (foundDialogue) {
-      console.log("steps 내용:", foundDialogue.steps);
-    }
-
-    setDialogue(foundDialogue);
+    fetchDialogue();
   }, [id]);
 
-  // 기록을 찾지 못했다면...
-  if (!dialogue) {
+  // 로딩 중일 때
+  if (isLoading) {
     return (
       <div>
         <Header />
         <main className="page-container">
-          <p className="empty-list-message">해당 기록을 찾을 수 없습니다.</p>
+          <p className="empty-list-message">기록을 불러오는 중...</p>
         </main>
       </div>
     );
   }
 
-  // 기록을 찾았다면 상세 내용을 보여줍니다.
+  // 기록을 찾지 못했을 때
+  if (!dialogue) {
+    return (
+      <div>
+        <Header />
+        <main className="page-container">
+          <p className="empty-list-message">
+            해당 기록을 찾을 수 없습니다.
+            <br />
+            <br />
+            <Link to="/" className="button button-primary">
+              홈으로 돌아가기
+            </Link>
+          </p>
+        </main>
+      </div>
+    );
+  }
+
+  // 기록을 찾았을 때
   return (
     <div>
       <Header />
@@ -55,12 +80,9 @@ function DialogueDetailPage() {
           <h2 className="dialogue-phase">부탁</h2>
           <p className="dialogue-guide">{dialogue.steps.request}</p>
         </div>
-        <Link
-          to="/"
-          className="button button-primary"
-          style={{ marginTop: "20px" }}
-        >
-          목록으로 돌아가기
+
+        <Link to="/" className="back-to-list-link">
+          <FaArrowLeft /> 목록으로 돌아가기
         </Link>
       </main>
     </div>
