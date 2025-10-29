@@ -454,8 +454,6 @@ body.secondary-page-bg {
   background-color: transparent;
 }
 
-/* src/App.css 파일 맨 아래에 추가 */
-
 /* --- 15. Back to List Link --- */
 
 .back-to-list-link {
@@ -475,4 +473,68 @@ body.secondary-page-bg {
 .back-to-list-link:hover {
   color: var(--c-primary);
   text-decoration: underline;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between; /* 로고와 버튼을 양 끝으로 */
+  align-items: center;
+}
+
+.auth-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-display-name {
+  color: var(--c-text-light);
+  font-size: 0.9em;
+}
+
+/* --- Header Authentication Buttons --- */
+
+.auth-controls .button {
+  font-family: "GmarketSansMedium", sans-serif;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid var(--c-border);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--c-text-light);
+}
+
+.auth-controls .button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--c-text-dark);
+}
+
+/* Google Login Button Specific Style */
+.auth-controls .button.button-primary {
+  background-color: var(--c-primary);
+  color: var(--c-bg);
+  border-color: var(--c-primary);
+  box-shadow: 0 4px 15px rgba(242, 201, 76, 0.2);
+}
+
+.auth-controls .button.button-primary:hover {
+  background-color: #ffde7d;
+  color: var(--c-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(242, 201, 76, 0.3);
+}
+
+.feedback-message {
+  font-size: 0.9rem;
+  font-family: "GmarketSansMedium", sans-serif;
+  color: var(--c-primary); /* 강조 색상 (노란색) */
+  margin-top: 12px;
+  padding: 10px 12px;
+  background-color: rgba(242, 201, 76, 0.05); /* 강조 색상 아주 연하게 */
+  border: 1px solid rgba(242, 201, 76, 0.2);
+  border-radius: 8px;
+  line-height: 1.6;
 }

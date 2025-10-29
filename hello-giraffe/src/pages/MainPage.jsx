@@ -12,23 +12,32 @@ import {
   BsPlusLg, // + 모양 아이콘을 가져옵니다.
 } from "react-icons/bs";
 
-function MainPage() {
+function MainPage({ user }) {
   const [dialogues, setDialogues] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    //user 정보가 있을 때만 데이터를 가져오도록 변경
     const fetchDialogues = async () => {
-      try {
-        const data = await getDialogues();
-        setDialogues(data);
-      } catch (error) {
-        console.error("데이터를 불러오는 중 오류 발생:", error);
-      } finally {
+      // user가 있고, uid가 있어야만 실행
+      if (user && user.uid) {
+        try {
+          const data = await getDialogues(user.uid); // user.uid를 넘겨줌
+          setDialogues(data);
+        } catch (error) {
+          console.error("데이터를 불러오는 중 오류 발생:", error);
+        } finally {
+          setIsLoading(false);
+        }
+      } else {
+        // user가 없으면 (로그아웃 상태) 로딩을 멈추고 목록을 비움
+        setDialogues([]);
         setIsLoading(false);
       }
     };
+
     fetchDialogues();
-  }, []);
+  }, [user]); // 🔥 useEffect의 의존성 배열에 user 추가
 
   const handleDelete = async (id) => {
     if (window.confirm("이 기록을 정말 삭제하시겠어요?")) {
@@ -43,8 +52,7 @@ function MainPage() {
 
   return (
     <div className="page-container">
-      <Header />
-      <main>
+      <main className="main-content">
         <section className="hero-section">
           <h1 className="hero-title">
             더 나은 관계를 위한
@@ -99,8 +107,12 @@ function MainPage() {
             <h2 className="section-title">최근 대화 기록</h2>
             {isLoading ? (
               <p className="empty-list-message">기록을 불러오는 중...</p>
-            ) : (
+            ) : user ? ( // 🔥 로그인 여부에 따라 다른 UI 표시
               <DialogueList dialogues={dialogues} onDelete={handleDelete} />
+            ) : (
+              <p className="empty-list-message">
+                로그인하고 나만의 대화 기록을 관리해보세요.
+              </p>
             )}
           </section>
         </div>
