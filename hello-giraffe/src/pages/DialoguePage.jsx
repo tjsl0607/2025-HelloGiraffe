@@ -69,12 +69,20 @@ function DialoguePage({ user }) {
     const VERCEL_COACH_URL = "https://hello-giraffe-proxy.vercel.app/api/coach";
     try {
       // Vercel 서버로 axios 요청
-      const result = await axios.post(VERCEL_COACH_URL, {
-        observation,
-        feeling,
-        need,
-        request,
-      });
+      const result = await axios.post(
+        VERCEL_COACH_URL,
+        {
+          observation,
+          feeling,
+          need,
+          request,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       // Vercel이 전달해준 피드백을 state에 저장
       setAiFeedback(result.data.feedback);
