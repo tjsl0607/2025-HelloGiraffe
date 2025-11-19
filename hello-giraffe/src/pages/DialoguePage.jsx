@@ -66,8 +66,7 @@ function DialoguePage({ user }) {
     setIsCoaching(true); // 로딩 시작
     setAiFeedback("");
 
-    const VERCEL_COACH_URL =
-      "https://hello-giraffe-proxy-tbvojga6l-tjsl0607s-projects.vercel.app/api/coach";
+    const VERCEL_COACH_URL = "https://hello-giraffe-proxy.vercel.app/api/coach";
     try {
       // Vercel 서버로 axios 요청
       const result = await axios.post(VERCEL_COACH_URL, {
