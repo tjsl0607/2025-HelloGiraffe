@@ -95,7 +95,7 @@ function DialoguePage({ user }) {
       setIsCoaching(false); // 로딩 종료
     }
   };
-
+  //push를 위한 한줄 추가
   const handleNext = () => {
     const totalSteps = scenarios[currentScenarioId].steps.length;
     setActiveStepIndex((prev) => Math.min(prev + 1, totalSteps - 1));
